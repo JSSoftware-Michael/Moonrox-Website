@@ -1,0 +1,186 @@
+/* Imports */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@600;700&display=swap');
+
+/*Defaults*/
+textarea:focus, input:focus{
+  outline: none;
+}
+
+/*Global Classes*/
+.noSelect {
+  user-drag: none;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.blur15 {
+  filter: blur(15px);
+}
+
+/*Animations*/
+@keyframes blurLoop {
+  from {
+    filter: blur(40px);
+  }
+
+  to {
+    filter: blur(5px);
+
+  }
+}
+
+
+/*Normal Classes*/
+body {
+  background: linear-gradient(169.96deg, #160316 4.86%, #0D031C 92.48%);
+  font-family: 'Outfit';
+  display: flex;
+  justify-content: center;
+}
+
+.App {
+  min-width: 1240px;
+}
+
+.header {
+  margin-top: 25px;
+  max-width: 1240px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: auto;
+}
+
+.searchInput {
+  display: flex;
+  position: relative;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.searchIcon {
+  position: relative;
+  padding-left: 5px;
+}
+
+.searchText {
+  margin-left: 5px;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+}
+
+.search {
+  height: 40px;
+  width: 200px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-sizing: border-box;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  text-align: center;
+  z-index: 1;
+  transition: background-color .5s, border-color .5s;
+}
+
+.search:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+}
+
+.search:focus {
+  background: rgba(255, 255, 255, 0.1);
+  outline: 1px solid red;
+
+}
+
+.logoContainer {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  width: 70px;
+  height: 40px;
+}
+
+.logo {
+  width: 70px;
+}
+
+.loopBlur {
+  animation-duration: 2.1s;
+  animation-name: blurLoop;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+
+.contactButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border-radius: 20px;
+}
+
+.contactBorderGradient {
+  /* We set the gradient on the element itself */
+    background-image: linear-gradient(#9579AF, #9C90F0);
+  /* ensures child position will be absolute within this element's stacking context */
+  position: relative;
+  /* z-index + position:relative creaates a new stacking context so that we can reorder child elements within this element */
+  z-index: 1;
+  width: 200px;
+  height: 40px;
+}
+
+
+.contactBorderGradient::before {
+  content: '';
+  display: block;
+  /* We puth the actual background color for the contents here */
+  background: linear-gradient(45deg, #6A68FE 0%, #9230DF 100%);
+  position: absolute;
+  /* We need to subtract a percentage equivalent to the amount used for top and left, since this curve is proportionally a little bit more closed than the outer one */
+  border-radius: calc(20px - 2%);
+  /* the top amount is half of the width remaining space */
+  height: 90%;
+  width: 98%;
+  /* z-index puts the child at the bottom of the stack, since we had created a new stacking context for the parent element this z-index will put the element behind all child content of the element, but not behind it */
+  z-index: -1;
+}
+
+
+.contactText {
+  margin-left: 5px;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+}
+
+.contactIcon {
+  position: relative;
+  height: 14px;
+  width: 16px;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+
